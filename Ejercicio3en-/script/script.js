@@ -4,6 +4,8 @@
 //Recoges los botones en un array.
     let boton = document.getElementsByTagName('button');
 
+//Variable para inicializar el cambio de color del juego
+    var activar = 'true';
 
 //Cuando se abra la ventana carga las funciones.
 window.onload = function(){
@@ -41,6 +43,34 @@ function activarBotones(){
         }
 }
 
+
+//Función para seleccionar y cambiar el color a los botones
+function colorBotones(num) {
+     
+    if(activar == 'true'){
+        boton[num].style.backgroundColor = "red";
+        boton[num].setAttribute('disabled', ''); 
+        activar = 'false';
+    
+    }else if(activar == 'false'){
+        boton[num].style.backgroundColor = "blue";
+        boton[num].setAttribute('disabled', ''); 
+        activar = 'true';
+    }
+   
+}
+
+
+//Función para reiniciar las movidas
+function reiniciar(){
+    jugadores[0].value = '';
+    jugadores[1].value = '';
+    
+    for (let index = 0; index < boton.length; index++) {
+        boton[index].setAttribute('disabled', '');
+        boton[index].removeAttribute('style');
+      }
+}
 
 
  
